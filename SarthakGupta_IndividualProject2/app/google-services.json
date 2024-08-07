@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "624859590304",
+    "project_id": "sarthakgupta-project2",
+    "storage_bucket": "sarthakgupta-project2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:624859590304:android:570e5732f9b75728f823c5",
+        "android_client_info": {
+          "package_name": "com.example.sarthakgupta_individualproject2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdQBGeAZX0og8UasPDfaqODCjYl8mI_R0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
