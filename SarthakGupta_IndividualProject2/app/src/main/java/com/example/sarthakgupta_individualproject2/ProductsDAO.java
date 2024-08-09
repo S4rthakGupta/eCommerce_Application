@@ -21,8 +21,8 @@ public interface ProductsDAO
     @Query("DELETE FROM ProductDetails WHERE id=:id")
     public void removeProduct(Integer id);
 
-//    @Query("SELECT id, productImg FROM ProductDetails WHERE id=:id")
-//    public List<ProductsDB> getImagesByProductId(Integer id);
+    @Query("SELECT id, productImg FROM ProductDetails WHERE id=:id")
+    public List<ProductsDB> getImagesByProductId(Integer id);
 
 }
 

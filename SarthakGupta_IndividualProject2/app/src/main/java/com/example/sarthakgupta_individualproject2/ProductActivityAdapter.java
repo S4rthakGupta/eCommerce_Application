@@ -81,24 +81,24 @@ public class ProductActivityAdapter extends RecyclerView.Adapter<ProductActivity
             cardView = itemView.findViewById(R.id.productsCardView);
             btnAddToCart = itemView.findViewById(R.id.cartBtn);
 
-            // Set onClickListener here
-//            cardView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    int position = getAdapterPosition(); // Get the item position
-//
-//                    ProductsDB product = products.get(position);
-//                    Bundle bundle = new Bundle();
-//                    bundle.putSerializable("product", (Serializable) product);
-//
-//                    Intent intent = new Intent(v.getContext(), ProductDetailActivity.class);
-//                    intent.putExtras(bundle);
-//                    intent.putExtra("user", user);
-//                    v.getContext().startActivity(intent);
-//
-//
-//                }
-//            });
+//             Set onClickListener here
+            cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition(); // Get the item position
+
+                    ProductsDB product = products.get(position);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("product", (Serializable) product);
+
+                    Intent intent = new Intent(v.getContext(), ProductDetailActivity.class);
+                    intent.putExtras(bundle);
+                    intent.putExtra("user", user);
+                    v.getContext().startActivity(intent);
+
+
+                }
+            });
 
 //            cartdatabase = Room.databaseBuilder(itemView.getContext(), CartDatabase.class,
 //                    "Cart").allowMainThreadQueries().build();
