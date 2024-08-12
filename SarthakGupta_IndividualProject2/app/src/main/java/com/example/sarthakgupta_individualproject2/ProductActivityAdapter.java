@@ -25,7 +25,7 @@ public class ProductActivityAdapter extends RecyclerView.Adapter<ProductActivity
 
     private static ArrayList<ProductsDB> products;
     private static String user = "";
-//    static CartDatabase cartdatabase;
+    static CartsAbstractClass cartDB;
 
     public ProductActivityAdapter(ArrayList<ProductsDB> products, String user) {
 
@@ -49,15 +49,15 @@ public class ProductActivityAdapter extends RecyclerView.Adapter<ProductActivity
         holder.txtPrice.setText("$" + Double.toString(product.getProductPrice()));
 
         // Check if item already exists in Cart for this user and product ID
-//        boolean itemExists = cartdatabase.cartDao().checkIfItemExists(user, product.getId());
-//        holder.btnAddToCart.setEnabled(!itemExists);
+        boolean itemExists = cartDB.cartDao().checkIfItemExists(user, product.getId());
+        holder.btnAddToCart.setEnabled(!itemExists);
 
-//        if (itemExists) {
-//            holder.btnAddToCart.setText("Added to cart!");
-//            holder.btnAddToCart.setBackgroundColor(holder.itemView.getContext().getResources().getColor(R.color.PrimaryColorDeselected));
-//        } else {
-//            holder.btnAddToCart.setText("Add to Cart");
-//        }
+        if (itemExists) {
+            holder.btnAddToCart.setText("Added to cart!");
+//            holder.btnAddToCart.setBackgroundColor(holder.itemView.getContext().getResources().getColor(R.color.bluegreycolor));
+        } else {
+            holder.btnAddToCart.setText("Add to Cart");
+        }
     }
 
     @Override
@@ -100,20 +100,20 @@ public class ProductActivityAdapter extends RecyclerView.Adapter<ProductActivity
                 }
             });
 
-//            cartdatabase = Room.databaseBuilder(itemView.getContext(), CartDatabase.class,
-//                    "Cart").allowMainThreadQueries().build();
+            cartDB = Room.databaseBuilder(itemView.getContext(), CartsAbstractClass.class,
+                    "Cart").allowMainThreadQueries().build();
 
-//            btnAddToCart.setOnClickListener(v -> {
-//
-//                int position = getAdapterPosition();
-//
-//                ProductsDB product = products.get(position);
-//                CartDB cartItem = new CartDB(user, product.getId(), 1);
-//                cartdatabase.cartDao().addProduct(cartItem);
-//                btnAddToCart.setEnabled(false);
-//                btnAddToCart.setBackgroundColor(itemView.getContext().getResources().getColor(R.color.PrimaryColorDeselected));
-//                btnAddToCart.setText("Added to cart!");
-//            });
+            btnAddToCart.setOnClickListener(v -> {
+
+                int position = getAdapterPosition();
+
+                ProductsDB product = products.get(position);
+                CartDB cartItem = new CartDB(user, product.getId(), 1);
+                cartDB.cartDao().addProduct(cartItem);
+                btnAddToCart.setEnabled(false);
+                // btnAddToCart.setBackgroundColor(itemView.getContext().getResources().getColor(R.color.bluegreycolor));
+                btnAddToCart.setText("Added to cart!");
+            });
 
         }
 

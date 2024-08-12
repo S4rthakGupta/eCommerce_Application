@@ -19,20 +19,21 @@ public class ProductActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     RecyclerView.Adapter mAdapter;
     RecyclerView.LayoutManager layoutManager;
+    ArrayList<ProductsDB> productList;
     ProductsAbstractClass productDB;
+
+    String user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_products);
-        String user = getIntent().getStringExtra("username");
+        user = getIntent().getStringExtra("username");
 
         recyclerView = findViewById(R.id.rView);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-
-        ArrayList<ProductsDB> productList;
 
         RoomDatabase.Callback myCallBack = new RoomDatabase.Callback() {
             @Override
@@ -135,5 +136,13 @@ public class ProductActivity extends AppCompatActivity {
         mAdapter = new ProductActivityAdapter(productList, user);
         recyclerView.setAdapter(mAdapter);
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        productList = (ArrayList<ProductsDB>) productDB.productsDao().listProducts();
+        mAdapter = new ProductActivityAdapter(productList, user);
+        recyclerView.setAdapter(mAdapter);
     }
 }

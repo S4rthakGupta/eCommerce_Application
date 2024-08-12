@@ -67,7 +67,7 @@
             android:textSize="20sp" />
 
         <Button
-            android:id="@+id/btnDecreaseQuantity"
+            android:id="@+id/quantityMinusCart"
 
             android:layout_width="71dp"
             android:layout_height="wrap_content"
@@ -84,7 +84,7 @@
             android:textAlignment="center" />
 
         <Button
-            android:id="@+id/btnIncreaseQuantity"
+            android:id="@+id/quantityPlusCart"
             android:layout_width="71dp"
             android:layout_height="wrap_content"
             android:text="+"
@@ -93,6 +93,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="368dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
@@ -121,5 +122,43 @@
             android:text="Add to Cart"
             android:textSize="16sp" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="139dp"
+        android:layout_height="24dp"
+        android:text="Description"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.147" />
+
+    <TextView
+        android:id="@+id/txtDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.084"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.121" />
+
+    <Button
+        android:id="@+id/goToCartBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Go to Cart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
