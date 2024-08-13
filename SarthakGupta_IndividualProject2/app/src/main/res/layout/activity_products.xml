@@ -10,6 +10,7 @@
         android:id="@+id/textView"
         android:layout_width="416dp"
         android:layout_height="50dp"
+        android:layout_marginTop="24dp"
         android:text="Products"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"

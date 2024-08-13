@@ -16,10 +16,34 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rView_Cart"
-        android:layout_width="349dp"
-        android:layout_height="671dp"
+        android:layout_width="328dp"
+        android:layout_height="307dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CART"
+        app:layout_constraintVertical_bias="0.056" />
+
+    <TextView
+        android:id="@+id/txtFinalAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.881"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rView_Cart"
+        app:layout_constraintVertical_bias="0.096" />
+
+    <Button
+        android:id="@+id/checkoutBtn"
+        android:layout_width="321dp"
+        android:layout_height="50dp"
+        android:text="Checkout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CART" />
+        app:layout_constraintTop_toBottomOf="@+id/rView_Cart" />
 </androidx.constraintlayout.widget.ConstraintLayout>

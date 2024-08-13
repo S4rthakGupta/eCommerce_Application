@@ -34,10 +34,14 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     private static CartsAbstractClass cartdatabase;
     private ProductsAbstractClass productsDatabase;
 
-    public CartAdapter(List<CartDB> cartItems, String user) {
+    private ItemUpdateListener objListener;
+
+    public CartAdapter(List<CartDB> cartItems, String user, ItemUpdateListener objListener) {
+
 
         this.cartItems = cartItems;
         this.user = user;
+        this.objListener = objListener;
     }
 
     @NonNull
@@ -100,19 +104,37 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
             btnIncreaseQuantity = itemView.findViewById(R.id.quantityPlusCart);
             btnRemove1 = itemView.findViewById(R.id.removeBtnCart);
 
-            btnDecreaseQuantity.setOnClickListener(v -> {
-                int currentQuantity = Integer.parseInt(txtQuantity1.getText().toString());
-                if (currentQuantity > 1) {
-                    currentQuantity--;
-                    txtQuantity1.setText(String.valueOf(currentQuantity));
+            btnIncreaseQuantity.setOnClickListener(v -> {
+                int position = getAdapterPosition();
+                if (position != -1) {  // Check for valid position
+                    CartDB cart = cartItems.get(position);
+                    int currentQuantity = cart.getQuantity();
+                    currentQuantity++;
+
+                    cart.setQuantity(currentQuantity);
+                    cartItems.set(position, cart);
+                    cartdatabase.cartDao().updateQuantity(currentQuantity, user, cart.getProductId());
+                    notifyItemChanged(position);
+                    notifyDataSetChanged();
+                    objListener.onItemUpdate();
                 }
             });
 
-            btnIncreaseQuantity.setOnClickListener(v -> {
-                int currentQuantity = Integer.parseInt(txtQuantity1.getText().toString());
-                currentQuantity++;
-                txtQuantity1.setText(String.valueOf(currentQuantity));
-
+            btnDecreaseQuantity.setOnClickListener(v -> {
+                int position = getAdapterPosition();
+                if (position != -1) {  // Check for valid position
+                    CartDB cart = cartItems.get(position);
+                    int currentQuantity = cart.getQuantity();
+                    if (currentQuantity > 1) {
+                        currentQuantity--;
+                        cart.setQuantity(currentQuantity);
+                        cartItems.set(position, cart);
+                        cartdatabase.cartDao().updateQuantity(currentQuantity, user, cart.getProductId());
+                        notifyItemChanged(position);
+                        notifyDataSetChanged();
+                        objListener.onItemUpdate();
+                    }
+                }
             });
 
             cartdatabase = Room.databaseBuilder(itemView.getContext(), CartsAbstractClass.class,
@@ -126,6 +148,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
                 cartItems.remove(position);
                 notifyItemRemoved(position);
                 notifyItemRangeChanged(position, cartItems.size());
+                objListener.onItemUpdate();
             });
         }
     }

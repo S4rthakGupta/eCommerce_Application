@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 public class ProductActivity extends AppCompatActivity {
 
+
     RecyclerView recyclerView;
     RecyclerView.Adapter mAdapter;
     RecyclerView.LayoutManager layoutManager;

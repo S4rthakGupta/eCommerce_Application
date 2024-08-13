@@ -43,7 +43,6 @@
             app:srcCompat="@drawable/keyboard1" />
 
 
-
     </LinearLayout>
 
     <LinearLayout
