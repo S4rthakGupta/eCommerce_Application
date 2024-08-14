@@ -17,16 +17,18 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/productName"
+                android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Keychron Keybard"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/productImg"
                 android:layout_width="match_parent"
-                android:layout_height="305dp"
+                android:layout_height="247dp"
                 app:srcCompat="@drawable/keyboard1" />
 
             <TextView
@@ -34,20 +36,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="$159"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/productDesc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="This product is a keyboard."
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="18dp" />
 
             <Button
                 android:id="@+id/cartBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Add to cart" />
+                android:backgroundTint="@color/black"
+                android:text="Add to cart"
+                android:textColor="#FFC107"
+                app:cornerRadius="10dp" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

@@ -1,6 +1,5 @@
 package com.example.sarthakgupta_individualproject2;
 
-import android.content.Context;
 import android.content.Intent;
 
 import android.os.Bundle;
@@ -10,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -75,7 +73,7 @@ public class ProductActivityAdapter extends RecyclerView.Adapter<ProductActivity
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             imgProduct = itemView.findViewById(R.id.productImg);
-            txtName = itemView.findViewById(R.id.productName);
+            txtName = itemView.findViewById(R.id.textView);
             txtShortDesc = itemView.findViewById(R.id.productDesc);
             txtPrice = itemView.findViewById(R.id.productPrice);
             cardView = itemView.findViewById(R.id.productsCardView);

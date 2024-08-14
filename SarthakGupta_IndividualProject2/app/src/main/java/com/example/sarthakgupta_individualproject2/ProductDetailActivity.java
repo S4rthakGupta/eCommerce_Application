@@ -28,7 +28,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_product_detail);
 
-        title = findViewById(R.id.productName);
+        title = findViewById(R.id.textView);
         longDescription = findViewById(R.id.txtDescription);
         mainImage = findViewById(R.id.mainImage);
         price = findViewById(R.id.txtPrice1);

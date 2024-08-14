@@ -11,18 +11,15 @@
         android:id="@+id/cardView"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="10dp"
-        app:cardBackgroundColor="#FFFFFF"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="10dp"
-        app:cardMaxElevation="12dp"
+        app:cardBackgroundColor="#EFEFEF"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp"
+        app:cardMaxElevation="5dp"
         app:cardUseCompatPadding="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.555"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,6 +33,15 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
+                <TextView
+                    android:id="@+id/productNameCart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Product Name"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
                 <ImageView
                     android:id="@+id/cartProductImg"
                     android:layout_width="99dp"
@@ -44,14 +50,39 @@
                     android:layout_weight="1"
                     tools:srcCompat="@tools:sample/avatars" />
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/productAmount"
+                    android:layout_width="132dp"
+                    android:layout_height="35dp"
+                    android:layout_weight="1"
+                    android:text="Price" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
                 <Button
                     android:id="@+id/quantityMinusCart"
 
                     android:layout_width="71dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:backgroundTint="#C80B0B"
                     android:text="-"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    app:cornerRadius="10dp" />
 
                 <EditText
                     android:id="@+id/cartQuantity"
@@ -68,40 +99,28 @@
                     android:layout_width="71dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:backgroundTint="@color/black"
                     android:text="+"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    app:cornerRadius="10dp" />
 
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/productNameCart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Product Name"
-                android:textSize="20sp"
-                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/productAmount"
-                    android:layout_width="132dp"
-                    android:layout_height="35dp"
-                    android:layout_weight="1"
-                    android:text="Price" />
+                android:orientation="vertical">
 
                 <Button
                     android:id="@+id/removeBtnCart"
-                    android:layout_width="wrap_content"
+                    android:layout_width="324dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
                     android:backgroundTint="#C80B0B"
-                    android:text="Remove" />
+                    android:text="Remove"
+                    app:cornerRadius="10dp" />
             </LinearLayout>
 
         </LinearLayout>

@@ -11,6 +11,7 @@
         android:id="@+id/startBtn"
         android:layout_width="128dp"
         android:layout_height="54dp"
+        android:backgroundTint="@color/black"
         android:text="Start Here"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -27,5 +27,9 @@ public interface CartDAO {
 
     @Query("SELECT quantity FROM Cart WHERE userName = :user AND productId = :productId")
     int getExistingQuantity(String user, int productId);
+
+    @Query("DELETE FROM Cart WHERE userName = :user")
+    public void removeItemsByUsername(String user);
+
 }
 

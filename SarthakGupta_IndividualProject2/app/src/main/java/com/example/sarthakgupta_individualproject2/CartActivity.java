@@ -1,5 +1,6 @@
 package com.example.sarthakgupta_individualproject2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -54,7 +55,15 @@ public class CartActivity extends AppCompatActivity implements ItemUpdateListene
         amount = findViewById(R.id.txtFinalAmount);
         checkoutBtn = findViewById(R.id.checkoutBtn);
         getTotalPrice();
+
+        checkoutBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(CartActivity.this, CheckoutActivity.class);
+            intent.putExtra("TotalPrice", amount.getText().toString());
+            intent.putExtra("Name", user);
+            startActivity(intent);
+        });
     }
+
 
 
     @Override

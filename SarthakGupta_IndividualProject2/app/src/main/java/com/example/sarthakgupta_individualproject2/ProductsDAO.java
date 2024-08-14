@@ -24,5 +24,6 @@ public interface ProductsDAO
     @Query("SELECT id, productImg FROM ProductDetails WHERE id=:id")
     public List<ProductsDB> getImagesByProductId(Integer id);
 
+
 }
 
