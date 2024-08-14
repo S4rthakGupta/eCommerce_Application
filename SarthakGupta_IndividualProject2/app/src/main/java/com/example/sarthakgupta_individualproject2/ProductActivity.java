@@ -52,6 +52,7 @@ public class ProductActivity extends AppCompatActivity {
                 "Products").allowMainThreadQueries().build();
 
 
+//        Dummy product data to be inserted if there is no data.
 //        ProductsDB p1 = new ProductsDB(
 //                "keyboard1",
 //                "Keychron K1 Mechanical Keyboard",
@@ -131,6 +132,66 @@ public class ProductActivity extends AppCompatActivity {
 //        );
 //
 //        productDB.productsDao().addProduct(p8);
+//
+//        ProductsDB p9 = new ProductsDB(
+//                "accessory1",
+//                "Braided USB-C Cable",
+//                19.99,
+//                "Durable and tangle-free USB-C cable.",
+//                "This braided USB-C cable is designed for durability and a tangle-free experience. Perfect for connecting your keyboard or other devices, it supports fast charging and data transfer."
+//        );
+//
+//        productDB.productsDao().addProduct(p9);
+//
+//        ProductsDB p10 = new ProductsDB(
+//                "accessory2",
+//                "Coiled USB-C Cable",
+//                24.99,
+//                "Premium coiled USB-C cable for mechanical keyboards.",
+//                "The coiled USB-C cable is a premium accessory designed for mechanical keyboards. It offers a sleek look and extends flexibility while connecting your keyboard to your devices. Supports fast charging and data transfer."
+//        );
+//
+//        productDB.productsDao().addProduct(p10);
+//
+//        ProductsDB p11 = new ProductsDB(
+//                "accessory3",
+//                "Mechanical Keyboard Carrying Bag",
+//                29.99,
+//                "Protective carrying bag for mechanical keyboards.",
+//                "This carrying bag is designed specifically for mechanical keyboards. It provides protection during transport and features a padded interior to keep your keyboard safe from bumps and scratches."
+//        );
+//
+//        productDB.productsDao().addProduct(p11);
+//
+//        ProductsDB p12 = new ProductsDB(
+//                "accessory4",
+//                "Keyboard Bag with Keyboard",
+//                159.99,
+//                "Mechanical keyboard bundled with a protective carrying bag.",
+//                "This bundle includes a mechanical keyboard along with a custom-fitted carrying bag. Ideal for users who want to carry their keyboard on the go with added protection and style."
+//        );
+//
+//        productDB.productsDao().addProduct(p12);
+//
+//        ProductsDB p13 = new ProductsDB(
+//                "accessory5",
+//                "Wooden Keyboard Hand Rest",
+//                39.99,
+//                "Ergonomic wooden hand rest for mechanical keyboards.",
+//                "This wooden hand rest is designed to provide ergonomic support while typing on mechanical keyboards. Crafted from high-quality wood, it offers a comfortable and natural feel, reducing strain during extended typing sessions."
+//        );
+//
+//        productDB.productsDao().addProduct(p13);
+//
+//        ProductsDB p14 = new ProductsDB(
+//                "accessory6",
+//                "Keyboard Protective Bag",
+//                24.99,
+//                "Protective and stylish bag for keyboards.",
+//                "This keyboard bag offers both protection and style, designed to fit most mechanical keyboards. It's perfect for transporting your keyboard safely while maintaining a sleek and professional look."
+//        );
+//
+//        productDB.productsDao().addProduct(p14);
 
 
         productList = (ArrayList<ProductsDB>) productDB.productsDao().listProducts();

@@ -44,5 +44,7 @@ public class CheckoutActivity extends AppCompatActivity {
             intent.putExtra("name", checkoutName);
             startActivity(intent);
         });
+
+
     }
 }

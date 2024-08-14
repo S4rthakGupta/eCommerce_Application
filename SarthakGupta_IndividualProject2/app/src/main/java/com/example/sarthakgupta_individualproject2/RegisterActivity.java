@@ -15,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterActivity extends AppCompatActivity {
 
+    // Declare UI elements and Firebase authentication object.
     Button registerButton;
     EditText editEmail_id, editPassword;
     private FirebaseAuth mAuth;
@@ -23,20 +24,24 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
+
+        // Set the content view to the XML layout file activity_register.xml.
         setContentView(R.layout.activity_register);
 
-        // Initialize Firebase Auth
+        // Initializing Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
+        // Link UI elements to their corresponding views in the XML layout.
         registerButton = findViewById(R.id.registerBtn);
         editEmail_id = findViewById(R.id.editRegisterUsername);
         editPassword = findViewById(R.id.editRegisterPassword);
 
-        // Pre-fill the email and password if they were passed from LoginActivity
+        // Get the intent that started this activity and pre-fill email and password fields if passed from LoginActivity.
         Intent intent = getIntent();
         String email = intent.getStringExtra("email");
         String password = intent.getStringExtra("password");
 
+//        Pre-fill email and password fields
         if (email != null) {
             editEmail_id.setText(email);
         }
@@ -45,11 +50,14 @@ public class RegisterActivity extends AppCompatActivity {
             editPassword.setText(password);
         }
 
+        // Set an OnClickListener on the registerButton to handle user registration attempts.
         registerButton.setOnClickListener(v -> {
+
+            // Retrieve the email and password entered by the user.
             String inputEmail = editEmail_id.getText().toString().trim();
             String inputPassword = editPassword.getText().toString().trim();
 
-            // Validate email and password
+            // Validating email and password
             if (TextUtils.isEmpty(inputEmail)) {
                 Toast.makeText(RegisterActivity.this, "Email is required", Toast.LENGTH_SHORT).show();
                 return;
@@ -65,19 +73,20 @@ public class RegisterActivity extends AppCompatActivity {
                 return;
             }
 
-            // Create user with Firebase Auth
+            // Create a new user with Firebase Authentication.
             mAuth.createUserWithEmailAndPassword(inputEmail, inputPassword)
                     .addOnCompleteListener(this, task -> {
                         if (task.isSuccessful()) {
-                            // User created successfully, show success message and pass data back to LoginActivity
+                            // If registration is successful, show a success message and pass the user's credentials back to LoginActivity.
                             Toast.makeText(RegisterActivity.this, "Account created successfully!", Toast.LENGTH_SHORT).show();
                             Intent resultIntent = new Intent();
                             resultIntent.putExtra("email", inputEmail);
                             resultIntent.putExtra("password", inputPassword);
                             setResult(RESULT_OK, resultIntent);
+                            // Close RegisterActivity and return to LoginActivity.
                             finish();
                         } else {
-                            // Registration failed, show error message
+                            // If registration fails, show an error message with the reason.
                             Toast.makeText(RegisterActivity.this, "Registration failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });

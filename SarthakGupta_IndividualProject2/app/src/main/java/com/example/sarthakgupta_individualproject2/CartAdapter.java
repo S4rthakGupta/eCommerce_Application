@@ -1,8 +1,5 @@
 package com.example.sarthakgupta_individualproject2;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,18 +10,11 @@ import android.widget.TextView;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
@@ -98,7 +88,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
             imgProductSmall = itemView.findViewById(R.id.cartProductImg);
             txtItemName = itemView.findViewById(R.id.productNameCart);
             txtUnitPrice = itemView.findViewById(R.id.productAmount);
-            cardView = itemView.findViewById(R.id.cardView);
+            cardView = itemView.findViewById(R.id.productsCardView);
             txtQuantity1 = itemView.findViewById(R.id.cartQuantity);
             btnDecreaseQuantity = itemView.findViewById(R.id.quantityMinusCart);
             btnIncreaseQuantity = itemView.findViewById(R.id.quantityPlusCart);

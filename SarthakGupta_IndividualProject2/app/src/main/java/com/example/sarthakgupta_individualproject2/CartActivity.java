@@ -3,6 +3,7 @@ package com.example.sarthakgupta_individualproject2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -55,7 +56,9 @@ public class CartActivity extends AppCompatActivity implements ItemUpdateListene
         amount = findViewById(R.id.txtFinalAmount);
         checkoutBtn = findViewById(R.id.checkoutBtn);
         getTotalPrice();
-
+        if (cartItemsList.isEmpty()) {
+            checkoutBtn.setVisibility(View.GONE);
+        }
         checkoutBtn.setOnClickListener(v -> {
             Intent intent = new Intent(CartActivity.this, CheckoutActivity.class);
             intent.putExtra("TotalPrice", amount.getText().toString());
@@ -83,11 +86,11 @@ public class CartActivity extends AppCompatActivity implements ItemUpdateListene
                 int quantity = cartItem.getQuantity();
                 TotalPrice += unitPrice * quantity;
             } else {
-                // Log the missing product ID
+
                 Log.e("CartActivity", "Product not found for ID: " + cartItem.getProductId());
             }
         }
-        TotalPrice += TotalPrice * 0.13; // Assuming this is for tax
+        TotalPrice += TotalPrice * 0.13;
         amount.setText("Total Amount: $" + String.format("%.2f", TotalPrice));
     }
 }

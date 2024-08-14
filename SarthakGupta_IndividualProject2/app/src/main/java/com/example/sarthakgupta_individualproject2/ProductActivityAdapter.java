@@ -73,7 +73,7 @@ public class ProductActivityAdapter extends RecyclerView.Adapter<ProductActivity
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             imgProduct = itemView.findViewById(R.id.productImg);
-            txtName = itemView.findViewById(R.id.textView);
+            txtName = itemView.findViewById(R.id.textVieww);
             txtShortDesc = itemView.findViewById(R.id.productDesc);
             txtPrice = itemView.findViewById(R.id.productPrice);
             cardView = itemView.findViewById(R.id.productsCardView);

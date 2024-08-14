@@ -1,62 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout2"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:background="#FDF6FE">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/productsCardView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteY="363dp">
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="10dp"
+        app:cardMaxElevation="12dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_margin="20dp"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
+                android:id="@+id/textVieww"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Keychron Keybard"
-                android:textAlignment="center"
-                android:textSize="16sp"
+                android:layout_gravity="center_horizontal|top"
+                android:text="Keyboard"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/productImg"
-                android:layout_width="match_parent"
-                android:layout_height="247dp"
+                android:layout_width="wrap_content"
+                android:layout_height="128dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:scaleType="centerCrop"
                 app:srcCompat="@drawable/keyboard1" />
 
             <TextView
-                android:id="@+id/productPrice"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="$159"
-                android:textAlignment="center"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
                 android:id="@+id/productDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="It is a keyboard"
+                android:textStyle="bold|italic" />
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="This product is a keyboard."
-                android:textAlignment="center"
-                android:textSize="18dp" />
+                android:layout_alignParentBottom="true">
 
-            <Button
-                android:id="@+id/cartBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/black"
-                android:text="Add to cart"
-                android:textColor="#FFC107"
-                app:cornerRadius="10dp" />
+                <TextView
+                    android:id="@+id/productPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$120.99"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
+                <Button
+                    android:id="@+id/cartBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:backgroundTint="@color/black"
+                    android:text="Add to cart"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:cornerRadius="10dp" />
+
+            </RelativeLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

@@ -8,6 +8,8 @@ import android.widget.Button;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+// MainActivity is the entry point of the application, extending AppCompatActivity to provide compatibility support.
+
 public class MainActivity extends AppCompatActivity {
     Button startButton;
     @Override
@@ -17,12 +19,29 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         startButton = findViewById(R.id.startBtn);
+
+        // Set an OnClickListener on the startButton to handle click events.
+
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                // When the button is clicked, create an Intent to start the LoginActivity.
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+
+                // Start the LoginActivity.
                 startActivity(intent);
             }
         });
     }
 }
+
+//To empty database
+//View
+//Tool Windows
+//Device Explorer
+// Data >Data
+//Com.example.sarthakgupta_inidviualproject2
+//Databases
+
+//To open database go to app inspection.

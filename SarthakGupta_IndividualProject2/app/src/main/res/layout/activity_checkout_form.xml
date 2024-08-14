@@ -86,6 +86,18 @@
                 android:minHeight="48dp" />
 
             <EditText
+                android:id="@+id/addressCheckout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="30dp"
+                android:ems="10"
+                android:hint="Address"
+                android:inputType="textPostalAddress"
+                android:minHeight="48dp" />
+
+            <EditText
                 android:id="@+id/creditCardCheckout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -109,12 +121,32 @@
                 android:inputType="numberPassword"
                 android:minHeight="48dp" />
 
+            <RadioGroup
+                android:id="@+id/radioGrpCheckout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:id="@+id/ccRadioBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:selectAllOnFocus="false"
+                    android:text="Credit Card"
+                    android:textAlignment="textStart"
+                    android:textIsSelectable="false" />
+
+                <RadioButton
+                    android:id="@+id/dcRadioBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Debit Card" />
+            </RadioGroup>
+
             <Button
                 android:id="@+id/submitBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
-                android:layout_marginTop="70dp"
                 android:layout_marginRight="50dp"
                 android:backgroundTint="#000000"
                 android:hapticFeedbackEnabled="true"
