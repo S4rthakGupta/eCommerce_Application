@@ -36,18 +36,16 @@ dependencies {
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
-//    implementation(libs.room.compiler)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     implementation(libs.room.runtime)
     annotationProcessor(libs.room.compiler)
 
-//    Add comments : Sarthak
+
     // Import the Firebase BoM
     implementation(platform("com.google.firebase:firebase-bom:33.1.2"))
 
-// When using the BoM, you don't specify versions in Firebase library dependencies
 
 // Add the dependency for the Firebase SDK for Google Analytics
     implementation("com.google.firebase:firebase-analytics")

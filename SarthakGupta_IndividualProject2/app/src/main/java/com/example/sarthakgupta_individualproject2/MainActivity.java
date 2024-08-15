@@ -35,13 +35,3 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 }
-
-//To empty database
-//View
-//Tool Windows
-//Device Explorer
-// Data >Data
-//Com.example.sarthakgupta_inidviualproject2
-//Databases
-
-//To open database go to app inspection.

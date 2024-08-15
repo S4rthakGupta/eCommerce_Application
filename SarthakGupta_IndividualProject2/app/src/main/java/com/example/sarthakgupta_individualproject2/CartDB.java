@@ -4,9 +4,11 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+//Defining a table named Cart.
 @Entity(tableName = "Cart")
 public class CartDB {
 
+    // Declaring columns
     @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true)
     int id;
@@ -14,6 +16,20 @@ public class CartDB {
     @ColumnInfo(name = "userName")
     String userName;
 
+    @ColumnInfo(name = "productId")
+    int productId;
+
+    @ColumnInfo(name = "quantity")
+    int quantity;
+
+    // Setting constructor for getter and setter for userName.
+    public CartDB(String userName, int productId, int quantity) {
+        this.userName = userName;
+        this.productId = productId;
+        this.quantity = quantity;
+    }
+
+    // Setting getters and setters.
     public int getId() {
         return id;
     }
@@ -43,18 +59,6 @@ public class CartDB {
     }
 
     public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    @ColumnInfo(name = "productId")
-    int productId;
-
-    @ColumnInfo(name = "quantity")
-    int quantity;
-
-    public CartDB(String userName, int productId, int quantity) {
-        this.userName = userName;
-        this.productId = productId;
         this.quantity = quantity;
     }
 }

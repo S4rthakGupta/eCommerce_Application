@@ -19,6 +19,7 @@ import java.util.List;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
+    // Defining objects and variables.
     private static List<CartDB> cartItems;
     private static String user = "";
     private static CartsAbstractClass cartdatabase;
@@ -26,9 +27,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
     private ItemUpdateListener objListener;
 
+
+//     Initializing a constructor
     public CartAdapter(List<CartDB> cartItems, String user, ItemUpdateListener objListener) {
-
-
         this.cartItems = cartItems;
         this.user = user;
         this.objListener = objListener;
@@ -37,44 +38,42 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     @NonNull
     @Override
     public CartAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        // Inflate the layout for cart item and return a ViewHolder.
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_cart_details, parent, false);
         return new CartAdapter.ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CartAdapter.ViewHolder holder, int position) {
+        // Bind data to ViewHolder.
         CartDB cart = cartItems.get(position);
 
+        // Initialize products database
         productsDatabase = Room.databaseBuilder(holder.itemView.getContext(), ProductsAbstractClass.class, "Products").allowMainThreadQueries().build();
 
+        // Get product details and set to ViewHolder
         ProductsDB product = productsDatabase.productsDao().getProductById(cart.getProductId());
 
+        // Log product and TextView details for debugging
         holder.imgProductSmall.setImageResource(holder.itemView.getContext().getResources().getIdentifier(product.getProductImg(), "drawable", holder.itemView.getContext().getPackageName()));
         holder.txtItemName.setText(product.getProductName());
         holder.txtUnitPrice.setText("$" + product.getProductPrice());
         holder.txtQuantity1.setText(Integer.toString(cart.getQuantity()));
 
+//        Logging for debugging purposes.
         Log.d("CartAdapter", "Product: " + product);
         Log.d("CartAdapter", "TextView: " + holder.txtItemName);
-
-        // Check if item already exists in Cart for this user and product ID
-//        boolean itemExists = cartdatabase.cartDao().checkIfItemExists(user, product.getId());
-//        holder.btnAddToCart.setEnabled(!itemExists);
-//
-//        if (itemExists) {
-//            holder.btnAddToCart.setText("Added to cart!");
-//            holder.btnAddToCart.setBackgroundColor(holder.itemView.getContext().getResources().getColor(R.color.PrimaryColorDeselected));
-//        } else {
-//            holder.btnAddToCart.setText("Add to Cart");
-//        }
     }
 
     @Override
     public int getItemCount() {
+        // Return the number of items in the cart
         return cartItems.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+
+//        Initializing Layouts Elements
         ImageView imgProductSmall;
 
         EditText txtQuantity1;
@@ -85,6 +84,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            // Initialize ViewHolder views
             imgProductSmall = itemView.findViewById(R.id.cartProductImg);
             txtItemName = itemView.findViewById(R.id.productNameCart);
             txtUnitPrice = itemView.findViewById(R.id.productAmount);
@@ -94,6 +95,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
             btnIncreaseQuantity = itemView.findViewById(R.id.quantityPlusCart);
             btnRemove1 = itemView.findViewById(R.id.removeBtnCart);
 
+            // Increase quantity button click listener
             btnIncreaseQuantity.setOnClickListener(v -> {
                 int position = getAdapterPosition();
                 if (position != -1) {  // Check for valid position
@@ -101,6 +103,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
                     int currentQuantity = cart.getQuantity();
                     currentQuantity++;
 
+                    // Update quantity and notify changes
                     cart.setQuantity(currentQuantity);
                     cartItems.set(position, cart);
                     cartdatabase.cartDao().updateQuantity(currentQuantity, user, cart.getProductId());
@@ -110,6 +113,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
                 }
             });
 
+            // Decrease quantity button click listener
             btnDecreaseQuantity.setOnClickListener(v -> {
                 int position = getAdapterPosition();
                 if (position != -1) {  // Check for valid position
@@ -126,10 +130,11 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
                     }
                 }
             });
-
+//             Initialzing cart database.
             cartdatabase = Room.databaseBuilder(itemView.getContext(), CartsAbstractClass.class,
                     "Cart").allowMainThreadQueries().build();
 
+            // Remove from cart button click listener
             btnRemove1.setOnClickListener(v -> {
                 int position = getAdapterPosition();
                 CartDB cart = cartItems.get(position);

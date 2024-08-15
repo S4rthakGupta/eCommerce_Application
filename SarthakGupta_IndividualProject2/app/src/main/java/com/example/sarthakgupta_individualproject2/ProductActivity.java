@@ -16,13 +16,14 @@ import java.util.ArrayList;
 
 public class ProductActivity extends AppCompatActivity {
 
-
+    // Declare variables for RecyclerView and its components.
     RecyclerView recyclerView;
     RecyclerView.Adapter mAdapter;
     RecyclerView.LayoutManager layoutManager;
     ArrayList<ProductsDB> productList;
     ProductsAbstractClass productDB;
 
+    // String to store the username.
     String user;
 
     @Override
@@ -30,12 +31,16 @@ public class ProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_products);
+
+        // Getting the username from the intent.
         user = getIntent().getStringExtra("username");
 
+        // Initializing RecyclerView and setting its layout manager.
         recyclerView = findViewById(R.id.rView);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
+        // Create and configure RoomDatabase.Callback to handle database creation and opening.
         RoomDatabase.Callback myCallBack = new RoomDatabase.Callback() {
             @Override
             public void onCreate(@NonNull SupportSQLiteDatabase db) {
@@ -48,6 +53,7 @@ public class ProductActivity extends AppCompatActivity {
             }
         };
 
+        // Build the Room database instance for ProductsAbstractClass.
         productDB = Room.databaseBuilder(getApplicationContext(), ProductsAbstractClass.class,
                 "Products").allowMainThreadQueries().build();
 
@@ -193,16 +199,17 @@ public class ProductActivity extends AppCompatActivity {
 //
 //        productDB.productsDao().addProduct(p14);
 
-
+        // Retrieve the list of products from the database and set up the adapter.
         productList = (ArrayList<ProductsDB>) productDB.productsDao().listProducts();
         mAdapter = new ProductActivityAdapter(productList, user);
         recyclerView.setAdapter(mAdapter);
-
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+
+        // Refresh the product list when the activity resumes.
         productList = (ArrayList<ProductsDB>) productDB.productsDao().listProducts();
         mAdapter = new ProductActivityAdapter(productList, user);
         recyclerView.setAdapter(mAdapter);

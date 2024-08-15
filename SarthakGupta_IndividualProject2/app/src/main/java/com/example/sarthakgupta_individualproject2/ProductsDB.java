@@ -1,19 +1,19 @@
 package com.example.sarthakgupta_individualproject2;
 
-
-
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
 
+// Annotate the class as a Room Entity, representing a table named "ProductDetails" in the database
 @Entity (
         tableName = "ProductDetails"
 )
 
 public class ProductsDB implements Serializable
 {
+
     @ColumnInfo(name="id")
     @PrimaryKey(autoGenerate = true)
     int id;
@@ -33,6 +33,8 @@ public class ProductsDB implements Serializable
     @ColumnInfo(name="productLongDesc")
     String productLongDesc;
 
+
+    // Constructor for initializing a new product instance with provided details (excluding the ID).
     public ProductsDB(
             String productImg,
             String productName,
@@ -47,6 +49,8 @@ public class ProductsDB implements Serializable
         this.productLongDesc = productLongDesc;
     }
 
+
+    //    Setting getters and setters on the constructor.
     public int getId() {
         return id;
     }
